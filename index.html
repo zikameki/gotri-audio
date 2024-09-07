@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arsip latgab</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f4f6;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+            color: Green;
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            gap: 10px; /* Spacing between buttons */
+        }
+
+        .filter-buttons button {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border: 2px solid #9400D3;
+            background-color: #FFF5EE;
+            color: #00CED1;
+            border-radius: 50px; /* Rounded buttons */
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        .filter-buttons button.active,
+        .filter-buttons button:hover {
+            background-color: white;
+            color: #228B22;
+            border-color: #FF00FF;
+        }
+
+        .gallery {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .media-item {
+            background-color: white;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 100%;
+        }
+
+        .media-item img,
+        .media-item video,
+        .media-item audio {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+
+        .media-item h2 {
+            font-size: 18px;
+            margin: 10px 0;
+            color: #DEB887;
+        }
+    </style>
+</head>
+<body>
+    <h1>Arsip Audio</h1>
+    <div class="gallery">
+        <!-- Video Item -->
+        <!-- Audio Item -->
+        <div class="media-item" data-type="audio">
+            <h2>Basis pien</h2>
+            <audio controls>
+                <source src="audio1.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+      <div class="media-item" data-type="audio">
+            <h2>pn loss</h2>
+            <audio controls>
+                <source src="audio2.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+            <div class="media-item" data-type="audio">
+            <h2>pukul rata</h2>
+            <audio controls>
+                <source src="audio3.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+
+        <!-- Image Item -->
+        <!-- Tambahkan lebih banyak video, audio, atau foto di sini -->
+    </div>
+
+    <script>
+        function filterMedia(type) {
+            const allItems = document.querySelectorAll('.media-item');
+            const buttons = document.querySelectorAll('.filter-btn');
+            
+            buttons.forEach(button => button.classList.remove('active'));
+            document.querySelector(`[onclick="filterMedia('${type}')"]`).classList.add('active');
+
+            allItems.forEach(item => {
+                if (type === 'all' || item.getAttribute('data-type') === type) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
